@@ -1,0 +1,24 @@
+name: DeployDocker
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - run: docker build -t dannybuilds/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true dannybuilds/react-test npm test
+
+      - run: docker build -t dannybuilds/multi-client ./client
+      - run: docker build -t dannybuilds/multi-nginx-router ./nginx
+      - run: docker build -t dannybuilds/multi-server ./server
+      - run: docker build -t dannybuilds/multi-worker ./worker
+
+      - run: docker push dannybuilds/multi-client
+      - run: docker push dannybuilds/multi-nginx-router
+      - run: docker push dannybuilds/multi-server
+      - run: docker push dannybuilds /multi-worker
