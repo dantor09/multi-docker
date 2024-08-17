@@ -43,6 +43,6 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 # from the build phase (builder) and copy into the directory
 # that nginx will serve the files from by default and also
 # explicitly stated in the default.conf file
-COPY --FROM=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
 
 # No need for a start command, nginx already does that by itself.
