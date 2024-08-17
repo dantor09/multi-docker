@@ -14,7 +14,7 @@ jobs:
       - run: docker run -e CI=true dannybuilds/react-test npm test
 
       - run: docker build -t dannybuilds/multi-client ./client
-      - run: docker build -t dannybuilds/multi-nginx-router ./nginx
+      - run: docker build -t dannybuilds/multi-nginx-router ./nginx-router
       - run: docker build -t dannybuilds/multi-server ./server
       - run: docker build -t dannybuilds/multi-worker ./worker
 
