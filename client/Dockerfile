@@ -19,7 +19,7 @@ COPY . .
 # Set up the default command, in this case the
 # npm run build command produces a production ready
 # package that will be served by nginx
-CMD ["npm", "run", "build"]
+RUN ["npm", "run", "build"]
 
 # RUN PHASE
 
