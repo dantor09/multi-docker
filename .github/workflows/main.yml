@@ -21,4 +21,4 @@ jobs:
       - run: docker push dannybuilds/multi-client
       - run: docker push dannybuilds/multi-nginx-router
       - run: docker push dannybuilds/multi-server
-      - run: docker push dannybuilds /multi-worker
+      - run: docker push dannybuilds/multi-worker
