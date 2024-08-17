@@ -1,0 +1,21 @@
+# Setup the operating system (Linux alpine 5mb) and the runtime (node.js version 16)
+FROM node:16-alpine
+
+# Setting up the working directory inside the container
+WORKDIR '/app'
+
+# Copying over the packagfe.json file
+COPY package.json .
+
+# npm installing the dependencies in package.json 
+RUN npm install
+
+# Copying over the source code from local computer
+# COPY ./client ./app
+COPY . .
+
+# Set up the default command, in this case the
+# npm run start, this will start a development 
+# specific start up. This includes features like 
+# hot module reloading 
+CMD ["npm", "run", "start"]
