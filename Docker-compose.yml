@@ -1,38 +1,31 @@
 version: "3"
 services:
+  client:
+    image: "dannybuilds/multi-client"
+    mem_limit: 128m
+    hostname: client
+  server:
+    image: "dannybuilds/multi-server"
+    mem_limit: 128m
+    hostname: api
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+      - PGUSER=$PGUSER
+      - PGHOST=$PGHOST
+      - PGDATABASE=$PGDATABASE
+      - PGPASSWORD=$PGPASSWORD
+      - PGPORT=$PGPORT
+  worker:
+    image: "dannybuild /multi-worker"
+    mem_limit: 128m
+    hostname: worker
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
   nginx-router:
-    image: dannybuilds/multi-nginx-router
-    container_name: nginx-router
+    image: "dannybuilds/multi-nginx-router"
+    mem_limit: 128m
+    hostname: nginx
     ports:
       - "80:80"
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-    links:
-      - client
-      - server
-
-  server:
-    image: dannybuilds/multi-server
-    container_name: api
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-
-  worker:
-    image: dannybuilds/multi-worker
-    container_name: worker
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-
-  client:
-    image: danybuilds/multi-client
-    container_name: client
-    deploy:
-      resources:
-        limits:
-          memory: 256M

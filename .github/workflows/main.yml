@@ -23,9 +23,6 @@ jobs:
       - run: docker push dannybuilds/multi-server
       - run: docker push dannybuilds/multi-worker
 
-      - name: Generate deployment package
-        run: zip -r deploy.zip . -x '*.git*'
-
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
@@ -36,4 +33,3 @@ jobs:
           existing_bucket_name: elasticbeanstalk-us-east-1-859482161696
           region: us-east-1
           version_label: ${{ github.sha }}-${{ github.run_number }}
-          deployment_package: deploy.zip
