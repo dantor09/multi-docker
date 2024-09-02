@@ -34,7 +34,7 @@
         {
             "name":"client",
             "memory": 128,
-            "image":"danybuilds/multi-client",
+            "image":"dannybuilds/multi-client",
             "hostname":"client",
             "essential": false
 
