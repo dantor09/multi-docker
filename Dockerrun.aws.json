@@ -1,0 +1,43 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name":"nginx-router",
+            "memory": 128,
+            "image":"dannybuilds/multi-nginx-router",
+            "hostname":"nginx-router",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links":["client","server"]
+        },
+        {
+            "name":"server",
+            "memory": 128,
+            "image":"dannybuilds/multi-server",
+            "hostname":"api",
+            "essential": false
+
+        },
+        {
+            "name":"worker",
+            "memory": 128,
+            "image":"dannybuilds/multi-worker",
+            "hostname":"worker",
+            "essential": false
+
+        },
+        {
+            "name":"client",
+            "memory": 128,
+            "image":"danybuilds/multi-client",
+            "hostname":"client",
+            "essential": false
+
+        }
+    ]
+}
