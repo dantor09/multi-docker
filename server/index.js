@@ -69,7 +69,7 @@ app.post('/values', async (req, res) => {
     const index = req.body.index;
     
     if (parseInt(index) >= 21) {
-        res.status(422).send('Index needs to be less than 21');
+        res.status(422).send('Index needs to be less than 21 OMG');
     }
     // set a value of nothing yet on the values hashset on index
     redisClient.hset('values',index, 'Nothing yet!');
