@@ -51,7 +51,7 @@ function fib(index) {
 // Values{message: fibonacci value}
 subscriber.on('message', (channel, message) => {
     publisher.hset('values', message, fib(parseInt(message)));
-    console.log('The function in the worker was ran fadsfas faf ');
+    console.log('The function in the worker was ran faf');
     console.log('This is the second change that should not be visible');
 });
 
