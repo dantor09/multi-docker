@@ -18,7 +18,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Software Engineering at its finest.
+            Software Engineering at its finest. This is the change that I am going to upload to AWS eventually.
           </a>
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
