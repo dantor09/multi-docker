@@ -14,6 +14,10 @@ RUN npm install
 # COPY ./client ./app
 COPY . .
 
+# In order to avoid error that react node user is unable 
+# to write to .cache file
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+
 # Set up the default command, in this case the
 # npm run start, this will start a development 
 # specific start up. This includes features like 
