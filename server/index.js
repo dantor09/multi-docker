@@ -67,6 +67,33 @@ app.get('/values/current', async (req, res) => {
     });
 });
 
+app.get('/ATG', async (req, res) => {
+    
+    // mock automatic tank gauge values
+    const automatic_tank_gauge_readings = [
+        {
+            store_number: '7707',
+            fuel_grade: 'unleaded',
+            gas_level: '120',
+            date: '2025-01-25 10:01'
+        },
+        {
+            store_number: '7707',
+            fuel_grade: 'midgrade',
+            gas_level: '130',
+            date: '2025-01-25 10:01'
+        },
+        {
+            store_number: '7707',
+            fuel_grade: 'premium',
+            gas_level: '243',
+            date: '2025-01-25 10:01'
+        }
+    ];
+
+    res.json(automatic_tank_gauge_readings);
+});
+
 app.post('/values', async (req, res) => {
     const index = req.body.index;
     
